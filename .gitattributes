@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+blankfile filter=lfs diff=lfs merge=lfs -text
+Assets/ShootingPKG/* filter=lfs diff=lfs merge=lfs -text
+Assets/Fonts/* filter=lfs diff=lfs merge=lfs -text

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // using System.Diagnostics;
+using TMPro;
 using UnityEngine.UI;   
 
 public class PhoneSensor : MonoBehaviour
@@ -9,7 +10,7 @@ public class PhoneSensor : MonoBehaviour
 
     public float Accel;
     //public GameObject TextBox;
-    public Text AccelText;
+    public TextMeshProUGUI AccelText;
     public AudioClip ClickSound;
     private AudioSource audioSource;
 
