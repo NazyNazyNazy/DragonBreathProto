@@ -184,9 +184,9 @@ public class GameManager : MonoBehaviour
     {
 
         
-        PlayerPrefs.SetString("Character", myCharacter.CharName.ToString());
-        PlayerPrefs.SetString("Weapon", myCharacter.WpnName.ToString());
-        PlayerPrefs.SetString("Armer", myCharacter.ArmName.ToString());
+        // PlayerPrefs.SetString("Character", myCharacter.CharName.ToString());
+        // PlayerPrefs.SetString("Weapon", myCharacter.WpnName.ToString());
+        // PlayerPrefs.SetString("Armer", myCharacter.ArmName.ToString());
         //他のキャラクターの装備品がセーブされない問題あり
         //キャラー名をkeyにしてforで（武器、防具をセーブする必要あり
         //とりあえず今日は実装を見送る
