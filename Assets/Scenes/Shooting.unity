@@ -316,7 +316,6 @@ GameObject:
   - component: {fileID: 174733115}
   - component: {fileID: 174733118}
   - component: {fileID: 174733117}
-  - component: {fileID: 174733116}
   m_Layer: 0
   m_Name: dr
   m_TagString: Untagged
@@ -339,18 +338,6 @@ Transform:
   m_Father: {fileID: 675058867}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &174733116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174733114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8691f598574494cafa52cfe1ff28a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &174733117
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1244,7 +1231,6 @@ GameObject:
   - component: {fileID: 582594556}
   - component: {fileID: 582594559}
   - component: {fileID: 582594558}
-  - component: {fileID: 582594557}
   m_Layer: 0
   m_Name: dr
   m_TagString: Untagged
@@ -1267,18 +1253,6 @@ Transform:
   m_Father: {fileID: 738462055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &582594557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582594555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8691f598574494cafa52cfe1ff28a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &582594558
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1870,8 +1844,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 2131924015}
+        m_TargetAssemblyTypeName: GameManager2, Assembly-CSharp
         m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
@@ -2480,7 +2454,7 @@ MonoBehaviour:
   isActive: 1
   rigidBody: {fileID: 951705825}
   bulletSpawn: {fileID: 951705829}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 2131924017}
   explosionPrefab: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
   powerToMove: 10
   bulletPrefab: {fileID: 7280515328309013577, guid: c488c59a917340c45885a793bb3eb3cc, type: 3}
@@ -2706,7 +2680,6 @@ GameObject:
   - component: {fileID: 1051161989}
   - component: {fileID: 1051161992}
   - component: {fileID: 1051161991}
-  - component: {fileID: 1051161990}
   m_Layer: 0
   m_Name: dr
   m_TagString: Untagged
@@ -2729,18 +2702,6 @@ Transform:
   m_Father: {fileID: 836856902}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1051161990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051161988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8691f598574494cafa52cfe1ff28a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &1051161991
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -3537,7 +3498,6 @@ GameObject:
   - component: {fileID: 1704998185}
   - component: {fileID: 1704998188}
   - component: {fileID: 1704998187}
-  - component: {fileID: 1704998186}
   m_Layer: 0
   m_Name: dr
   m_TagString: Untagged
@@ -3560,18 +3520,6 @@ Transform:
   m_Father: {fileID: 884342776}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1704998186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704998184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8691f598574494cafa52cfe1ff28a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &1704998187
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -4491,7 +4439,6 @@ GameObject:
   - component: {fileID: 2023689670}
   - component: {fileID: 2023689673}
   - component: {fileID: 2023689672}
-  - component: {fileID: 2023689671}
   m_Layer: 0
   m_Name: dr
   m_TagString: Untagged
@@ -4514,18 +4461,6 @@ Transform:
   m_Father: {fileID: 1776791570}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2023689671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023689669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8691f598574494cafa52cfe1ff28a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!328 &2023689672
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -4957,6 +4892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2131924016}
   - component: {fileID: 2131924015}
+  - component: {fileID: 2131924017}
   m_Layer: 0
   m_Name: ShootingManager
   m_TagString: GameController
@@ -4971,7 +4907,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131924014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9a4c260f046ef24fac2d3b9d6206e81, type: 3}
   m_Name: 
@@ -5004,6 +4940,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2131924017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131924014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c989171517b45a283f6ddbd9b9aee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 951705830}
+  spawners:
+  - {fileID: 443074043}
+  - {fileID: 1588734299}
+  - {fileID: 1517348810}
+  - {fileID: 981337394}
+  - {fileID: 1689666997}
+  gameStartCanvas: {fileID: 1326781505}
+  gameOverCanvas: {fileID: 2044824400}
+  bgCity1: {fileID: 675058866}
+  bgCity2: {fileID: 836856901}
+  bgCity3: {fileID: 738462054}
+  bgCity4: {fileID: 884342775}
+  bgCity5: {fileID: 1776791569}
+  scoreText: {fileID: 822485250}
+  LeftTimeText: {fileID: 708412709}
+  GameOverText: {fileID: 2109204796}
+  HomeBtn: {fileID: 834727102}
 --- !u!1 &2132280326
 GameObject:
   m_ObjectHideFlags: 0

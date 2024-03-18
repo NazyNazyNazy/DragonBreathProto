@@ -110,7 +110,6 @@ public class ShootingManager : MonoBehaviour
         // Location.encountNo = 0;
         // PlayerPrefs.SetInt("encountNo", Location.encountNo);
         // PlayerPrefs.Save();
-        int encountNo = 3;
 
         EndTime = System.DateTime.Now + LeftTime;
         OnGame = true;

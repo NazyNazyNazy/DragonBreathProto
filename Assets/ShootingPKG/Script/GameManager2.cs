@@ -24,10 +24,9 @@ public class GameManager2 : MonoBehaviour
     int score = 0;
     private int lenth;
 
-
-
     // ★追加
     public int Score
+    
     {
         set
         {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class MeteorController : MonoBehaviour
 {
@@ -56,10 +57,10 @@ public class MeteorController : MonoBehaviour
         if (hp <= 0)
         {
 
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
             // ★追加2
             GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().Score += score;
+
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }
