@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/DriveResult.unity
+    guid: f46d4277c58874769852ed9f613363bb
+  - enabled: 1
+    path: Assets/Scenes/Shooting.unity
+    guid: f106e8205be8842b48902aeba0e03cd8
+  - enabled: 1
+    path: Assets/Scenes/DrivingScene.unity
+    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f4e28d6ef54834bc8b88d4c67adbd792, type: 2}

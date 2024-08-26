@@ -112,8 +112,11 @@ public class PlayerController : MonoBehaviour
     {
         firing = true;
 
-        // 弾のゲームオブジェクトを生成
-        Instantiate(bulletPrefab, bulletSpawn.position, thisTransform.rotation);
+        // 弾のゲームオブジェクトを生成　レベルの数だけ球が増える　＋そのうちレベルに合わせてタマのタイプが変わるようにする
+        for (int i = 0; i < DriveDragon.Level; i++){
+            Instantiate(bulletPrefab, bulletSpawn.position, thisTransform.rotation);
+        }
+        // Instantiate(bulletPrefab, bulletSpawn.position, thisTransform.rotation);
 
         yield return fireIntervalWait;
 

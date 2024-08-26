@@ -20,6 +20,13 @@ public class BulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Wallタグをもつゲームオブジェクト（＝壁）に当たったら消滅
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void OnBecameInvisible()
