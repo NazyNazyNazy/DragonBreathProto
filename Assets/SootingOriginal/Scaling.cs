@@ -18,7 +18,7 @@ public class Scaling : MonoBehaviour
         // ScaleBar.gameObject.SetActive(false);
         iniScaleV = BackGround.transform.localScale;
         iniScale = iniScaleV.magnitude;
-        Debug.Log("Initial Scale"+ iniScaleV.ToString() + iniScale.ToString());
+        // Debug.Log("Initial Scale"+ iniScaleV.ToString() + iniScale.ToString());
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class Scaling : MonoBehaviour
         // Debug.Log(ScaleBar.value);
         BGScale =  Mathf.Sqrt(((Mathf.Pow(iniScale, 2)) / 3)) / ScaleBar.value;
         BackGround.transform.localScale = new Vector3(BGScale, BGScale, BGScale);
-        Debug.Log("Scale"+ BGScale.ToString());
+        // Debug.Log("Scale"+ BGScale.ToString());
     }
 }

@@ -16,6 +16,7 @@ public class MonsterController : MonoBehaviour
     public int score = 100;
 
     bool isVisible = false;
+    public int damage;
 
     void Start()
     {
@@ -28,6 +29,12 @@ public class MonsterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Damage(1);
+        } 
+        else if (collision.gameObject.CompareTag("DamageArea"))
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().HP += -1 * damage;
+            // Debug.Log("Damage" + GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().HP.ToString());
+            Destroy(gameObject);
         }
     }
 

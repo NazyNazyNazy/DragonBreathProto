@@ -46,12 +46,25 @@ public class ShootingManager : MonoBehaviour
     private System.TimeSpan ChangeBgTime;
     private int BgNo;
 
+    public int hitpoint;
+    public int achievement;
+    public Slider HitPointGauge;
+    public Slider AchievmentGauge;
+
+
     public int Score
     {
         set
         {
-            score = Mathf.Clamp(value, 0, 9999999);
+            score = Mathf.Clamp(value, 0, 100000);
             scoreText.text = score.ToString();
+            // AchievmentGauge.value =  score;
+            if(achievement > 0) {
+                AchievmentGauge.value =  score;
+            } else {
+                // Debug.Log(score.ToString() + ", ach:" + achievement.ToString());
+                AchievmentGauge.value = 0;
+            }
         }
         get
         {
@@ -59,6 +72,22 @@ public class ShootingManager : MonoBehaviour
         }
     }
 
+    public int HP
+    {
+        set
+        {
+            hitpoint = Mathf.Clamp(value, 0, 100000);
+            // scoreText.text = score.ToString();
+            HitPointGauge.value =  hitpoint;
+            Debug.Log("HP:" + hitpoint);
+
+
+        }
+        get
+        {
+            return hitpoint;
+        }
+    }
 
     void Start()
     {
@@ -86,6 +115,12 @@ public class ShootingManager : MonoBehaviour
         OnGame = false;
         HPexp = PlayerPrefs.GetInt("HPexp");
 
+        // achievement = 1000;
+        // hitpoint = 100;
+        AchievmentGauge.maxValue = achievement;
+        AchievmentGauge.value = achievement;
+        HitPointGauge.maxValue =  hitpoint;
+        HitPointGauge.value =  hitpoint;
     }
 
     public void GameStart()
@@ -146,6 +181,40 @@ public class ShootingManager : MonoBehaviour
         SetActiveSpawners(false);
     }
 
+    public void GameClear()
+    {
+        OnGame = false;
+        // ゲームオーバー画面の表示
+        gameOverCanvas.gameObject.SetActive(true);
+        // 背景画面を非表示
+        bgCity1.gameObject.SetActive(false);
+        bgCity2.gameObject.SetActive(false);
+        bgCity3.gameObject.SetActive(false);
+        bgCity4.gameObject.SetActive(false);
+        bgCity5.gameObject.SetActive(false);
+
+        // 画面上に残っている隕石を削除
+        GameObject[] meteors = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject meteor in meteors)
+        {
+            Destroy(meteor);
+        }
+
+        GameOverText.text = "ステージクリア！\n";// + "HP経験値: " + ((int)Mathf.Ceil((float)Score / 1000f)).ToString() + "を獲得";
+        
+        // HPexp = HPexp + (int)Mathf.Ceil((float)Score / 1000f); // 1000点毎に1exp入手、 は数切り上げ
+        // PlayerPrefs.SetInt("HPexp", HPexp);
+        // PlayerPrefs.Save();
+
+        // スポナーを停止
+        SetActiveSpawners(false);
+    }
+
+
+
+
+
+
     void SetActiveSpawners(bool value)
     {
         foreach (MeteorSpawner spawner in spawners)
@@ -162,11 +231,27 @@ public class ShootingManager : MonoBehaviour
 
     void Update()
     {
+        // Debug.Log("Test Test out side OnGame");
         if(OnGame)
         {
+            // Debug.Log("Test Test in side OnGame");
 
             LeftTimeText.text =
             "残り時間 " + (EndTime - System.DateTime.Now).ToString("ss");
+
+            if(score >= achievement)
+            {
+                Debug.Log("Game Over");
+                // GameOver();
+                GameClear();
+            } else {
+                // Debug.Log("Score:" + score.ToString() + ", ach:" + achievement.ToString());
+            }
+
+            if(hitpoint <= 0)
+            {
+                GameOver();
+            }
 
             if(EndTime <= System.DateTime.Now)
             {

@@ -17,6 +17,8 @@ public class MeteorController : MonoBehaviour
 
     bool isVisible = false;
 
+    public int damage;
+
     void Start()
     {
         rigidBody.velocity = transform.up * speed;
@@ -28,6 +30,9 @@ public class MeteorController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Damage(1);
+        } else if (collision.gameObject.CompareTag("DamageArea"))
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().hitpoint -= damage;
         }
     }
 

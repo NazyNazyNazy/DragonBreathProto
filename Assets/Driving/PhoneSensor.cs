@@ -28,7 +28,7 @@ public class PhoneSensor : MonoBehaviour
     private float lastLon;
     private float lastLat;
     private float millage;
-    private float milageTotal;
+    public static float milageTotal;
     private int encount;
     private float encountPitch;
     private float pitchCap;
