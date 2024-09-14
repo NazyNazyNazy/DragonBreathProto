@@ -18,4 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DrivingScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a511ec6dd62764f0a9d657d857f176cb, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: fae68dc3374e2405e9acba81ce122d30, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f4e28d6ef54834bc8b88d4c67adbd792, type: 2}
