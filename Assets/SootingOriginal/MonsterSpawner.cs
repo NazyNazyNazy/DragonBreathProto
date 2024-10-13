@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
 
-    enum MeteorSize { Small, Medium, Large, x}
+    enum MeteorSize { Small, Medium, Large, x }
 
     public bool isActive = false;
 
@@ -66,17 +66,18 @@ public class MonsterSpawner : MonoBehaviour
             case MeteorSize.Medium:
                 hpMultiplier = 2;
                 scoreMultiplier = 2;
-                scale *= 1.5f;
+                scale *= 0.1f;
                 break;
             case MeteorSize.Large:
                 hpMultiplier = 3;
                 scoreMultiplier = 3;
-                scale *= 2;
+                scale *= 0.1f;
                 break;
         }
 
         meteorObj = Instantiate(meteorPrefab, transform.position, rotation * transform.rotation);
-        meteorObj.transform.localScale = scale;
+        //meteorObj.transform.localScale = scale;
+        meteorObj.transform.localScale = scale * 0.1f;
         meteor = meteorObj.GetComponent<MeteorController>();
         meteor.hp *= hpMultiplier;
         meteor.score *= scoreMultiplier;

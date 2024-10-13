@@ -2987,7 +2987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905644740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -8.75, z: -4799.9995}
+  m_LocalPosition: {x: -0, y: -8.75, z: -4775}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3913,7 +3913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -121, y: -4.7}
+  m_AnchoredPosition: {x: -107.79, y: -4.7}
   m_SizeDelta: {x: 50.6906, y: 35}
   m_Pivot: {x: 0.49999985, y: 0.49999988}
 --- !u!114 &1180311302
@@ -3963,8 +3963,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4707,6 +4707,7 @@ GameObject:
   - component: {fileID: 1413649438}
   - component: {fileID: 1413649437}
   - component: {fileID: 1413649436}
+  - component: {fileID: 1413649439}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4829,6 +4830,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413649434}
   m_CullTransparentMesh: 0
+--- !u!114 &1413649439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413649434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1fe468ef22840c4922e4cbfabc1e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427588237
 GameObject:
   m_ObjectHideFlags: 0
@@ -7317,7 +7330,7 @@ MonoBehaviour:
   GameOverText: {fileID: 2109204796}
   HomeBtn: {fileID: 834727102}
   hitpoint: 100
-  achievement: 3000
+  achievement: 1500
   HitPointGauge: {fileID: 681361570}
   AchievmentGauge: {fileID: 1945223417}
 --- !u!1 &2132280326

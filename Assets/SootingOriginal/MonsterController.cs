@@ -20,7 +20,7 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
-        rigidBody.velocity = - transform.up * speed;
+        rigidBody.velocity = -transform.up * speed;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -29,7 +29,7 @@ public class MonsterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Damage(1);
-        } 
+        }
         else if (collision.gameObject.CompareTag("DamageArea"))
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().HP += -1 * damage;

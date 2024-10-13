@@ -11,7 +11,7 @@ public class MeteorController : MonoBehaviour
 
     [Min(1), Space]
     public int hp = 1;
-    public float speed = 5;
+    public float speed = 10;
     [Min(0)]
     public int score = 100;
 
@@ -30,7 +30,8 @@ public class MeteorController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Damage(1);
-        } else if (collision.gameObject.CompareTag("DamageArea"))
+        }
+        else if (collision.gameObject.CompareTag("DamageArea"))
         {
             GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().hitpoint -= damage;
         }

@@ -63,15 +63,22 @@ public class MeteorSpawner : MonoBehaviour
         // intをenumに変換し、サイズやHP等を設定
         switch ((MeteorSize)System.Enum.ToObject(typeof(MeteorSize), choosedSize))
         {
+            case MeteorSize.Small:
+                hpMultiplier = 2;
+                scoreMultiplier = 2;
+                scale *= 0.1f;
+                break;
+
             case MeteorSize.Medium:
                 hpMultiplier = 2;
                 scoreMultiplier = 2;
-                scale *= 1.5f;
+                scale *= 0.1f;
                 break;
+
             case MeteorSize.Large:
                 hpMultiplier = 3;
                 scoreMultiplier = 3;
-                scale *= 2;
+                scale *= 0.1f;
                 break;
         }
 
