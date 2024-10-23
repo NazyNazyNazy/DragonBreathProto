@@ -22,6 +22,8 @@ public class MonsterSpawner : MonoBehaviour
     float minSpawnInterval = 1;
     [SerializeField, Min(0.1f)]
     float maxSpawnInterval = 3;
+    [SerializeField, Min(1)]
+    int meteorCount = 1;  // デフォルトで1個ー青木ー
 
     bool spawning = false;
 
@@ -73,6 +75,40 @@ public class MonsterSpawner : MonoBehaviour
                 scoreMultiplier = 3;
                 scale *= 0.1f;
                 break;
+        }
+
+        void SpawnMeteor()
+        {
+            for (int i = 0; i < meteorCount; i++)
+            {  // meteorCount回繰り返す
+                GameObject meteorObj;
+                MeteorController meteor;
+                Vector3 scale = Vector3.one;
+                Quaternion rotation = Quaternion.Euler(Vector3.forward * 90); // 隕石の発射角度
+                int hpMultiplier = 1;
+                int scoreMultiplier = 1;
+                int sizeCount = System.Enum.GetNames(typeof(MeteorSize)).Length;
+                int choosedSize = Random.Range(0, sizeCount);
+                switch ((MeteorSize)System.Enum.ToObject(typeof(MeteorSize), choosedSize))
+                {
+                    case MeteorSize.Medium:
+                        hpMultiplier = 2;
+                        scoreMultiplier = 2;
+                        scale *= 0.1f;
+                        break;
+                    case MeteorSize.Large:
+                        hpMultiplier = 3;
+                        scoreMultiplier = 3;
+                        scale *= 0.1f;
+                        break;
+                }
+                meteorObj = Instantiate(meteorPrefab, transform.position, rotation * transform.rotation);
+                meteorObj.transform.localScale = scale * 0.1f;
+                meteor = meteorObj.GetComponent<MeteorController>();
+                meteor.hp *= hpMultiplier;
+                meteor.score *= scoreMultiplier;
+                meteor.speed = Random.Range(minMeteorSpeed, maxMeteorSpeed);
+            }
         }
 
         meteorObj = Instantiate(meteorPrefab, transform.position, rotation * transform.rotation);

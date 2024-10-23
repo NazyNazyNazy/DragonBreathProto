@@ -7330,7 +7330,7 @@ MonoBehaviour:
   GameOverText: {fileID: 2109204796}
   HomeBtn: {fileID: 834727102}
   hitpoint: 100
-  achievement: 1500
+  achievement: 1000
   HitPointGauge: {fileID: 681361570}
   AchievmentGauge: {fileID: 1945223417}
 --- !u!1 &2132280326

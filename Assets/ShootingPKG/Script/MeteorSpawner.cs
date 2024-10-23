@@ -19,11 +19,17 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField, Range(-180, 180)]
     float maxAngleZ = 0;
     [SerializeField, Min(0.1f)]
-    float minSpawnInterval = 1;
+    float minSpawnInterval = 1;//青木
     [SerializeField, Min(0.1f)]
-    float maxSpawnInterval = 3;
+    float maxSpawnInterval = 3;//青木
 
     bool spawning = false;
+
+    void Start()
+    {
+        minSpawnInterval = 3f;//出現数
+        maxSpawnInterval = 6f;//出現数
+    }
 
     void Update()
     {
