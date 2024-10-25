@@ -25,6 +25,13 @@ public class MeteorSpawner : MonoBehaviour
 
     bool spawning = false;
 
+    void Start()
+    {
+        minSpawnInterval = 0.1f;
+        maxSpawnInterval = 0.1f;
+    }
+
+
     void Update()
     {
         if (isActive && !spawning)

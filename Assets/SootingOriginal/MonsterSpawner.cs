@@ -11,9 +11,9 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField]
     GameObject meteorPrefab = null;
     [SerializeField, Min(0)]
-    float minMeteorSpeed = 1;
+    float minMeteorSpeed = 30;
     [SerializeField, Min(0)]
-    float maxMeteorSpeed = 4;
+    float maxMeteorSpeed = 30;
     [SerializeField, Range(-180, 180)]
     float minAngleZ = 0;
     [SerializeField, Range(-180, 180)]
