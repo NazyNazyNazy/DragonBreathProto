@@ -11,6 +11,7 @@ public class PhoneSensor : MonoBehaviour
     public float Accel;
     //public GameObject TextBox;
     public TextMeshProUGUI AccelText;
+    public TextMeshProUGUI LevelText;
     public AudioClip ClickSound;
     private AudioSource audioSource;
 
@@ -123,13 +124,20 @@ public class PhoneSensor : MonoBehaviour
                 // eventList.Add(llg);
                 // encountID.Add(i);
                 millage = millage - encountPitch;
-                encount += 1;
+                DriveDragon.Level += 1;
+                // encount += 1;
 
                 // ResultText.text =
                 //     "現在の走行距離は" + millage.ToString()
                 //     + "\nHPアップイベント獲得！"
                 //     + "\n" + encount.ToString() + "回"
                 //     ;
+
+                LevelText.text =
+                    "現在の走行距離は" + millage.ToString()
+                    + "\nLevelアップイベント獲得！"
+                    + "\n" + DriveDragon.Level.ToString() + "レベル"
+                    ;
             }
             // float milageDelta = Mathf.Sqrt(Mathf.Pow(Input.location.lastData.latitude - lastLat, 2f) + Mathf.Pow((Input.location.lastData.longitude - lastLong), 2f));
             float milageDelta = Mathf.Sqrt(Mathf.Pow(lat - lastLat, 2f) + Mathf.Pow(lon - lastLon, 2f));

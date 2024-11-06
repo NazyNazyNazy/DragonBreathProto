@@ -17,8 +17,8 @@ public class DrivingManager : MonoBehaviour
         
     }
 
-        public void GoToDrivingResult()
+    public void GoToDrivingResult()
     {
         SceneManager.LoadScene("DriveResult");
-    }   
+    }
 }
