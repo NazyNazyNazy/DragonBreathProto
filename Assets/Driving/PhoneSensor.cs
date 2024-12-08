@@ -33,9 +33,12 @@ public class PhoneSensor : MonoBehaviour
     private int encount;
     private float encountPitch;
     private float pitchCap;
+    private float pitchMin;
 
     private int frameRate;
     private int count;
+
+    private Vector3 revZ;
 
     // Start is called before the first frame update
     void Start() {
@@ -45,7 +48,7 @@ public class PhoneSensor : MonoBehaviour
             StartCoroutine(GetLocation());
         }
 
-        TrackingList = new List<LLG>();
+        TrackingList =   new List<LLG>();
         // i = 0;
         // tmp = 0;
         // pitch = 0.015f;
@@ -56,7 +59,9 @@ public class PhoneSensor : MonoBehaviour
         frameRate = 150;
         count = 0;
         encountPitch = 0.015f;
-        pitchCap = 1f;
+        pitchCap = 0.01f;
+        pitchMin = 0.0001f;
+        SetZDirection();
     }
 
     private IEnumerator GetLocation()
@@ -78,19 +83,29 @@ public class PhoneSensor : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //accelaration sensor
-        //Accel = Input.acceleration.magnitude;
         var dir = Vector3.zero;
-        dir.x = -1 * Input.acceleration.x;
-        dir.z = -1 * Input.acceleration.y;
-        Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
+        dir = Input.acceleration;
+        //Accel = Input.acceleration.magnitude;
+        Vector3 zAxisA = dir.normalized;
+        Vector3 zAxisB = revZ.normalized;
+        Quaternion rotation = Quaternion.FromToRotation(zAxisA, zAxisB);
+        Vector3 RotatedDir = rotation * dir;
+        Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.z, 2));
+
+        // var dir = Vector3.zero;
+        // dir.x = -1 * Input.acceleration.x;
+        // dir.z = -1 * Input.acceleration.y;
+        // Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
 
         float lat = Input.location.lastData.latitude;
         float lon = Input.location.lastData.longitude;
 
         AccelText.text = "Accelaration:" 
                         + Accel.ToString() 
-                        + "\nX:" + dir.x.ToString() 
-                        + "\nY:" + dir.z.ToString() 
+                        // + "\nX:" + dir.x.ToString() 
+                        // + "\nY:" + dir.z.ToString()
+                        + "\nX:" + RotatedDir.x.ToString() 
+                        + "\nY:" + RotatedDir.z.ToString() 
                         + "\n\nLon:" + lon.ToString() 
                         + "\nLat:" + lat.ToString()
                         + "\nMilage:" + milageTotal
@@ -121,27 +136,26 @@ public class PhoneSensor : MonoBehaviour
             // tmpAccelABC = 0;
             TrackingList.Add(llg);
             // i = TrackingList.Count - 1;
-            while (millage >= encountPitch) {
+            LevelText.text =
+                "現在の走行経験値" + millage.ToString() + " / " +encountPitch.ToString()
+                + "\nLevelアップイベント獲得！"
+                + "\n" + DriveDragon.Level.ToString() + "レベル"
+                ;
+            if (millage >= encountPitch) {
                 // eventList.Add(llg);
                 // encountID.Add(i);
                 millage = millage - encountPitch;
                 DriveDragon.Level += 1;
                 // encount += 1;
-
                 // ResultText.text =
                 //     "現在の走行距離は" + millage.ToString()
                 //     + "\nHPアップイベント獲得！"
                 //     + "\n" + encount.ToString() + "回"
                 //     ;
-                LevelText.text =
-                    "現在の走行距離は" + millage.ToString()
-                    + "\nLevelアップイベント獲得！"
-                    + "\n" + DriveDragon.Level.ToString() + "レベル"
-                    ;
             }
             // float milageDelta = Mathf.Sqrt(Mathf.Pow(Input.location.lastData.latitude - lastLat, 2f) + Mathf.Pow((Input.location.lastData.longitude - lastLong), 2f));
             float milageDelta = Mathf.Sqrt(Mathf.Pow(lat - lastLat, 2f) + Mathf.Pow(lon - lastLon, 2f));
-            if (milageDelta > pitchCap) {
+            if (milageDelta > pitchCap || milageDelta < pitchMin) {
                 milageDelta = 0f;
             }
             millage = millage + milageDelta;
@@ -152,5 +166,9 @@ public class PhoneSensor : MonoBehaviour
             lastLon = lon;
         }
         count +=1;
+    }
+
+    void SetZDirection() {
+        revZ = Input.acceleration;
     }
 }
