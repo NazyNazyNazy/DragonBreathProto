@@ -38,6 +38,8 @@ public class PhoneSensor : MonoBehaviour
     private int frameRate;
     private int count;
 
+    private float adjustX;
+    private float adjustY;
     private Vector3 revZ;
 
     // Start is called before the first frame update
@@ -56,12 +58,15 @@ public class PhoneSensor : MonoBehaviour
         milageTotal = 0f;
         lastLon = Input.location.lastData.longitude;
         lastLat = Input.location.lastData.latitude;
-        frameRate = 150;
+        frameRate = 60;
         count = 0;
         encountPitch = 0.015f;
         pitchCap = 0.01f;
         pitchMin = 0.0001f;
         SetZDirection();
+
+        adjustX = 0f;
+        adjustY = 0f;
     }
 
     private IEnumerator GetLocation()
@@ -83,18 +88,35 @@ public class PhoneSensor : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //accelaration sensor
-        var dir = Vector3.zero;
-        dir = Input.acceleration;
-        //Accel = Input.acceleration.magnitude;
-        Vector3 zAxisA = dir.normalized;
-        Vector3 zAxisB = revZ.normalized;
-        Quaternion rotation = Quaternion.FromToRotation(zAxisA, zAxisB);
-        Vector3 RotatedDir = rotation * dir;
-        Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.z, 2));
 
         // var dir = Vector3.zero;
         // dir.x = -1 * Input.acceleration.x;
         // dir.z = -1 * Input.acceleration.y;
+        // Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
+
+        // var dir = Vector3.zero;
+        // dir = Input.acceleration;
+        // //Accel = Input.acceleration.magnitude;
+        // Vector3 zAxisA = dir.normalized;
+        // Vector3 zAxisB = revZ.normalized;
+        // Quaternion rotation = Quaternion.FromToRotation(zAxisA, zAxisB);
+        // Vector3 RotatedDir = rotation * dir;
+        // Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.z, 2));
+
+
+        var dir = Vector3.zero;
+        dir = Input.acceleration;
+
+        var Zdir = new Vector3(0f, 0f, -1f);
+        Vector3 zAxisA = Zdir.normalized;
+        Vector3 zAxisB = revZ.normalized;
+        Quaternion rotation = Quaternion.FromToRotation(zAxisB, zAxisA);
+        Vector3 RotatedDir = rotation * dir;
+        Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.y, 2));
+
+        // var dir = Vector3.zero;
+        // dir.x = -1 * Input.acceleration.x - adjustX;
+        // dir.y = -1 * Input.acceleration.y - adjustY;
         // Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
 
         float lat = Input.location.lastData.latitude;
@@ -103,18 +125,19 @@ public class PhoneSensor : MonoBehaviour
         AccelText.text = "Accelaration:" 
                         + Accel.ToString() 
                         // + "\nX:" + dir.x.ToString() 
-                        // + "\nY:" + dir.z.ToString()
+                        // + "\nY:" + dir.y.ToString()
                         + "\nX:" + RotatedDir.x.ToString() 
-                        + "\nY:" + RotatedDir.z.ToString() 
+                        + "\nY:" + RotatedDir.y.ToString() 
                         + "\n\nLon:" + lon.ToString() 
                         + "\nLat:" + lat.ToString()
                         + "\nMilage:" + milageTotal
                         + "\n" + encount.ToString() + "回";
         //TextBox.TextMeshPro = "Accelaration:" + Accel.ToString();
 
-        if (Accel >= 0.3) {
-            audioSource.PlayOneShot(ClickSound);
+        if (Accel >= 0.3f) {
+            // audioSource.PlayOneShot(ClickSound);
             UnityEngine.Debug.Log ("Large G detected");
+            LevelText.text = "大きいGが検出されました";
             millage = 0f;
         }
 
@@ -168,7 +191,13 @@ public class PhoneSensor : MonoBehaviour
         count +=1;
     }
 
-    void SetZDirection() {
+    public void SetZDirection() {
         revZ = Input.acceleration;
     }
+
+    public void SetInitialG() {
+        adjustX = -1 * Input.acceleration.x;
+        adjustY = -1 * Input.acceleration.y;
+    }
+
 }
