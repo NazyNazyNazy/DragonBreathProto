@@ -20,10 +20,12 @@ public class PhoneSensor : MonoBehaviour
     public float latitude;
     // public Text locationText;
     public List<LLG> TrackingList;
+    public List<int> LevelUpList;
+    public List<int> GDetectList;
     public string LogTime;
 
     private LLG llg;
-    // private int i;
+    private int i;
     // private int tmp;
 
     private float lastLon;
@@ -32,11 +34,13 @@ public class PhoneSensor : MonoBehaviour
     public static float milageTotal;
     private int encount;
     private float encountPitch;
+    private float threshold;
     private float pitchCap;
     private float pitchMin;
 
     private int frameRate;
     private int count;
+    private int GDetectCount;
 
     private float adjustX;
     private float adjustY;
@@ -51,7 +55,7 @@ public class PhoneSensor : MonoBehaviour
         }
 
         TrackingList =   new List<LLG>();
-        // i = 0;
+        i = 0;
         // tmp = 0;
         // pitch = 0.015f;
         millage = 0f;
@@ -60,13 +64,16 @@ public class PhoneSensor : MonoBehaviour
         lastLat = Input.location.lastData.latitude;
         frameRate = 60;
         count = 0;
-        encountPitch = 0.015f;
+        encountPitch = 0.015f / 2;
+        threshold = 0.3f * 2;
         pitchCap = 0.01f;
         pitchMin = 0.0001f;
         SetZDirection();
 
         adjustX = 0f;
         adjustY = 0f;
+
+        GDetectCount = 0;
     }
 
     private IEnumerator GetLocation()
@@ -88,22 +95,6 @@ public class PhoneSensor : MonoBehaviour
     // Update is called once per frame
     void Update() {
         //accelaration sensor
-
-        // var dir = Vector3.zero;
-        // dir.x = -1 * Input.acceleration.x;
-        // dir.z = -1 * Input.acceleration.y;
-        // Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
-
-        // var dir = Vector3.zero;
-        // dir = Input.acceleration;
-        // //Accel = Input.acceleration.magnitude;
-        // Vector3 zAxisA = dir.normalized;
-        // Vector3 zAxisB = revZ.normalized;
-        // Quaternion rotation = Quaternion.FromToRotation(zAxisA, zAxisB);
-        // Vector3 RotatedDir = rotation * dir;
-        // Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.z, 2));
-
-
         var dir = Vector3.zero;
         dir = Input.acceleration;
 
@@ -114,31 +105,27 @@ public class PhoneSensor : MonoBehaviour
         Vector3 RotatedDir = rotation * dir;
         Accel = Mathf.Sqrt(Mathf.Pow(RotatedDir.x, 2) + Mathf.Pow(RotatedDir.y, 2));
 
-        // var dir = Vector3.zero;
-        // dir.x = -1 * Input.acceleration.x - adjustX;
-        // dir.y = -1 * Input.acceleration.y - adjustY;
-        // Accel = Mathf.Sqrt(Mathf.Pow(dir.x, 2) + Mathf.Pow(dir.y, 2));
-
         float lat = Input.location.lastData.latitude;
         float lon = Input.location.lastData.longitude;
 
         AccelText.text = "Accelaration:" 
                         + Accel.ToString() 
-                        // + "\nX:" + dir.x.ToString() 
-                        // + "\nY:" + dir.y.ToString()
                         + "\nX:" + RotatedDir.x.ToString() 
                         + "\nY:" + RotatedDir.y.ToString() 
                         + "\n\nLon:" + lon.ToString() 
                         + "\nLat:" + lat.ToString()
                         + "\nMilage:" + milageTotal
-                        + "\n" + encount.ToString() + "回";
-        //TextBox.TextMeshPro = "Accelaration:" + Accel.ToString();
+                        + "\n" + encount.ToString() + "回"
+                        + "\nG検知:" + GDetectCount.ToString();
 
-        if (Accel >= 0.3f) {
+
+        if (Accel >= threshold) {
             // audioSource.PlayOneShot(ClickSound);
             UnityEngine.Debug.Log ("Large G detected");
             LevelText.text = "大きいGが検出されました";
             millage = 0f;
+            GDetectList.Add(TrackingList.Count);
+            GDetectCount = GDetectCount + 1;
         }
 
         if(count == frameRate){
@@ -158,7 +145,7 @@ public class PhoneSensor : MonoBehaviour
             // (Mathf.Sqrt(Mathf.Pow(llg.accelX,2) + Mathf.Pow(llg.accelY,2) + Mathf.Pow(llg.accelZ,2)));
             // tmpAccelABC = 0;
             TrackingList.Add(llg);
-            // i = TrackingList.Count - 1;
+            i = TrackingList.Count - 1;
             LevelText.text =
                 "現在の走行経験値" + millage.ToString() + " / " +encountPitch.ToString()
                 + "\nLevelアップイベント獲得！"
@@ -175,6 +162,7 @@ public class PhoneSensor : MonoBehaviour
                 //     + "\nHPアップイベント獲得！"
                 //     + "\n" + encount.ToString() + "回"
                 //     ;
+                LevelUpList.Add(TrackingList.Count);
             }
             // float milageDelta = Mathf.Sqrt(Mathf.Pow(Input.location.lastData.latitude - lastLat, 2f) + Mathf.Pow((Input.location.lastData.longitude - lastLong), 2f));
             float milageDelta = Mathf.Sqrt(Mathf.Pow(lat - lastLat, 2f) + Mathf.Pow(lon - lastLon, 2f));
