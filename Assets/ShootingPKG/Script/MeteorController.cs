@@ -3,7 +3,6 @@ using TMPro;
 
 public class MeteorController : MonoBehaviour
 {
-
     [SerializeField]
     Rigidbody2D rigidBody = null;
     [SerializeField]
@@ -62,7 +61,6 @@ public class MeteorController : MonoBehaviour
 
         if (hp <= 0)
         {
-
             // ★追加2
             GameObject.FindGameObjectWithTag("GameController").GetComponent<ShootingManager>().Score += score;
 
@@ -71,5 +69,4 @@ public class MeteorController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
