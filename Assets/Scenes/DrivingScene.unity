@@ -1073,7 +1073,7 @@ Transform:
   m_GameObject: {fileID: 1198552896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1, y: 0.4, z: 5.72}
-  m_LocalScale: {x: 2.9439461, y: 2.9439461, z: 2.9439461}
+  m_LocalScale: {x: 2.9439461, y: 2.9439461, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1637,6 +1637,8 @@ MonoBehaviour:
   prefabGDetect: {fileID: 2771241420574532809, guid: c58059e5adc1b4bcc97a6894484fe105, type: 3}
   player: {fileID: 1633217593}
   testMode: 0
+  BackGround: {fileID: 1198552896}
+  BGIniScale: 0
 --- !u!1 &1833865312
 GameObject:
   m_ObjectHideFlags: 0

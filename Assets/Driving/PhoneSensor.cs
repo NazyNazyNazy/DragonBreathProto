@@ -110,14 +110,20 @@ public class PhoneSensor : MonoBehaviour
 
         AccelText.text = "Accelaration:" 
                         + Accel.ToString() 
-                        + "\nX:" + RotatedDir.x.ToString() 
-                        + "\nY:" + RotatedDir.y.ToString() 
-                        + "\n\nLon:" + lon.ToString() 
-                        + "\nLat:" + lat.ToString()
-                        + "\nMilage:" + milageTotal
+                        // + "\nX:" + RotatedDir.x.ToString() 
+                        // + "\nY:" + RotatedDir.y.ToString() 
+                        // + "\n\nLon:" + lon.ToString() 
+                        // + "\nLat:" + lat.ToString()
+                        // + "\nMilage:" + milageTotal
+                        // + "\n" + encount.ToString() + "回"
+                        // + "\nG検知:" + GDetectCount.ToString();
+                        + "\nX:" + (Mathf.Round(RotatedDir.x * 100)/100).ToString() 
+                        + "\nY:" + (Mathf.Round(RotatedDir.x * 100)/100).ToString()
+                        + "\n\nLon:" + (Mathf.Round(lon * 100)/100).ToString()
+                        + "\nLat:" + (Mathf.Round(lat * 100)/100).ToString()
+                        + "\nMilage:" + Mathf.Round(milageTotal * 1000000f) + "μ"
                         + "\n" + encount.ToString() + "回"
                         + "\nG検知:" + GDetectCount.ToString();
-
 
         if (Accel >= threshold) {
             // audioSource.PlayOneShot(ClickSound);
@@ -147,7 +153,7 @@ public class PhoneSensor : MonoBehaviour
             TrackingList.Add(llg);
             i = TrackingList.Count - 1;
             LevelText.text =
-                "現在の走行経験値" + millage.ToString() + " / " +encountPitch.ToString()
+                "現在の走行経験値" + (millage * 1000000f).ToString() + " μ/ " +(encountPitch * 1000000f).ToString()+ " μ/ "
                 + "\nLevelアップイベント獲得！"
                 + "\n" + DriveDragon.Level.ToString() + "レベル"
                 ;

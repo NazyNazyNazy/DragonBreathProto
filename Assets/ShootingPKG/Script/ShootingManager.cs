@@ -13,6 +13,9 @@ public class ShootingManager : MonoBehaviour
     [SerializeField]
     MeteorSpawner[] spawners = null;
     [SerializeField]
+
+    MonsterSpawner_2[] spawner2s = null;
+    [SerializeField]
     Canvas gameStartCanvas = null;
     [SerializeField]
     Canvas gameOverCanvas = null;
@@ -220,6 +223,11 @@ public class ShootingManager : MonoBehaviour
         foreach (MeteorSpawner spawner in spawners)
         {
             spawner.isActive = value;
+        }
+
+        foreach (MonsterSpawner_2 spawner2 in spawner2s)
+        {
+            spawner2.isActive = value;
         }
     }
 

@@ -1445,6 +1445,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &465823913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6215982510508480243, guid: 8571cd6a9f47b483daee3a094550b128, type: 3}
+  m_PrefabInstance: {fileID: 824066696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887f6af6b9849469bb6067b6db5e7285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &472976739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6215982510508480243, guid: 8571cd6a9f47b483daee3a094550b128, type: 3}
+  m_PrefabInstance: {fileID: 1561902028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887f6af6b9849469bb6067b6db5e7285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -7445,6 +7467,9 @@ MonoBehaviour:
   - {fileID: 1082271097}
   - {fileID: 1892877488}
   - {fileID: 1374535891}
+  spawner2s:
+  - {fileID: 472976739}
+  - {fileID: 465823913}
   gameStartCanvas: {fileID: 1326781505}
   gameOverCanvas: {fileID: 2044824400}
   bgCity1: {fileID: 675058866}

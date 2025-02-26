@@ -27,6 +27,8 @@ public class Draw2 : MonoBehaviour
     public GameObject player;
     public bool testMode;
 
+    public GameObject BackGround;
+    public float BGIniScale;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class Draw2 : MonoBehaviour
         }
         // Markers = new List<GameObject>();
         count = 0;
+        BGIniScale = (BackGround.transform.localScale.x +  BackGround.transform.localScale.y)/2f;
     }
 
     // Update is called once per frame
@@ -115,8 +118,15 @@ public class Draw2 : MonoBehaviour
                 //print("Latitudu is " + latY[i].ToString() + ", Y = " + TrackingList[i].latitude.ToString());
             }
 
-
-
+            //背景画像を拡大縮小
+            float BGScale;
+            if((latMax - latMin) == 0f){
+                BGScale = 1f;
+            } else {
+                BGScale =  0.00001f /(latMax - latMin);
+            }
+            Debug.Log("BGScale:" + BGScale);
+            BackGround.transform.localScale = new Vector3(BGIniScale * BGScale, BGIniScale * BGScale, 0);
 
             //**Reset Marker****************************************************
             GameObject[] allMarkers = GameObject.FindGameObjectsWithTag("Marker");
