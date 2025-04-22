@@ -46,6 +46,8 @@ public class PhoneSensor : MonoBehaviour
     private float adjustY;
     private Vector3 revZ;
 
+    public AudioClip LevelUpSound;
+
     // Start is called before the first frame update
     void Start() {
         audioSource = GetComponent<AudioSource>();
@@ -108,8 +110,8 @@ public class PhoneSensor : MonoBehaviour
         float lat = Input.location.lastData.latitude;
         float lon = Input.location.lastData.longitude;
 
-        AccelText.text = "Accelaration:" 
-                        + Accel.ToString() 
+        AccelText.text = "Accelaration:" + (Mathf.Round(Accel * 100)/100).ToString() 
+                        // "Accelaration:" + Accel.ToString() 
                         // + "\nX:" + RotatedDir.x.ToString() 
                         // + "\nY:" + RotatedDir.y.ToString() 
                         // + "\n\nLon:" + lon.ToString() 
@@ -126,7 +128,7 @@ public class PhoneSensor : MonoBehaviour
                         + "\nG検知:" + GDetectCount.ToString();
 
         if (Accel >= threshold) {
-            // audioSource.PlayOneShot(ClickSound);
+            audioSource.PlayOneShot(ClickSound);
             UnityEngine.Debug.Log ("Large G detected");
             LevelText.text = "大きいGが検出されました";
             millage = 0f;
@@ -169,6 +171,7 @@ public class PhoneSensor : MonoBehaviour
                 //     + "\n" + encount.ToString() + "回"
                 //     ;
                 LevelUpList.Add(TrackingList.Count);
+                audioSource.PlayOneShot(LevelUpSound);
             }
             // float milageDelta = Mathf.Sqrt(Mathf.Pow(Input.location.lastData.latitude - lastLat, 2f) + Mathf.Pow((Input.location.lastData.longitude - lastLong), 2f));
             float milageDelta = Mathf.Sqrt(Mathf.Pow(lat - lastLat, 2f) + Mathf.Pow(lon - lastLon, 2f));
@@ -186,6 +189,9 @@ public class PhoneSensor : MonoBehaviour
     }
 
     public void SetZDirection() {
+        Debug.Log("SetZDirection");
+        
+        audioSource.PlayOneShot(ClickSound);
         revZ = Input.acceleration;
     }
 

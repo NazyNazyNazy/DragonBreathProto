@@ -13,4 +13,9 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.LoadScene("DriveResult");
     }
+
+    public void GoToDrive()
+    {
+        SceneManager.LoadScene("DrivingScene");
+    }
 }
