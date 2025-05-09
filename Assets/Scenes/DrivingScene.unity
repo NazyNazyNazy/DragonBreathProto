@@ -1284,13 +1284,13 @@ MonoBehaviour:
   Accel: 0
   AccelText: {fileID: 1451812274}
   LevelText: {fileID: 49078046}
-  ClickSound: {fileID: 8300000, guid: b4d4c927ddd411547bd9cf0278c25ca6, type: 3}
+  ClickSound: {fileID: 8300000, guid: 4a131e26f5c5d4ab4bea386c9b6e77e9, type: 3}
   longtitude: 0
   latitude: 0
   LevelUpList: 
   GDetectList: 
   LogTime: 
-  LevelUpSound: {fileID: 8300000, guid: 3630f63c77b894348b32255226e9ba1f, type: 3}
+  LevelUpSound: {fileID: 8300000, guid: b837596d4caf34a70834baad81b04cdf, type: 3}
 --- !u!82 &1551987134
 AudioSource:
   m_ObjectHideFlags: 0
