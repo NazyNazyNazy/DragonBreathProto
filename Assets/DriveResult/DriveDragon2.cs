@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class DriveDragon : MonoBehaviour
+public class DriveDragon2 : MonoBehaviour
 {
     public GameObject Dragon;
     public GameObject PopUp;
@@ -13,17 +13,15 @@ public class DriveDragon : MonoBehaviour
     private float MovePitch;
     private float DragonHightIncrement = 0.001f;
 
-    private AudioSource audioSource; // ← 追加・変更：AudioSource取得用
-    public AudioClip levelUpSound;   // ← 追加・変更：Inspectorから設定できる効果音
+    // 🎵 ファンファーレ用
+    public AudioSource audioSource;
+    public AudioClip levelUpFanfareClip;
 
-    // Start is called before the first frame update
     void Start()
     {
         DragonHeight = Dragon.transform.position.y;
-        audioSource = GetComponent<AudioSource>(); // ← 追加・変更：AudioSourceを取得
     }
 
-    // Update is called once per frame
     void Update()
     {
         // LevelUp();
@@ -33,20 +31,19 @@ public class DriveDragon : MonoBehaviour
     {
         Level += 1;
         DragonHeight += 1.8f;
+
         Debug.Log("Dragon Hight" + DragonHeight.ToString() + ", Level:" + Level.ToString());
 
-        // ドラゴンの高さをアニメーションで変更
         transform.DOMoveY(DragonHeight, 1);
 
-        // ポップアップUI表示＋アニメーション
+        // 🎵 ファンファーレを再生（音声ファイル名: ドラアップ）
+        if (audioSource != null && levelUpFanfareClip != null)
+        {
+            audioSource.PlayOneShot(levelUpFanfareClip);
+        }
+
         PopUp.SetActive(true);
         PopUp.transform.localScale = Vector3.one * 0.2f;
         PopUp.transform.DOScale(1f, 0.6f).SetEase(Ease.OutBack, 5f);
-
-        // 効果音再生
-        if (levelUpSound != null && audioSource != null) // ← 追加・変更：安全確認
-        {
-            audioSource.PlayOneShot(levelUpSound); // ← 追加・変更：1回だけ鳴らす
-        }
     }
 }
