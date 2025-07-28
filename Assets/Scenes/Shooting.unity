@@ -7427,6 +7427,7 @@ MonoBehaviour:
   - {fileID: 1082271097}
   - {fileID: 1892877488}
   - {fileID: 1374535891}
+  spawner2s: []
   gameStartCanvas: {fileID: 1326781505}
   gameOverCanvas: {fileID: 2044824400}
   bgCity1: {fileID: 675058866}
@@ -7439,7 +7440,7 @@ MonoBehaviour:
   GameOverText: {fileID: 2109204796}
   HomeBtn: {fileID: 834727102}
   hitpoint: 100
-  achievement: 1000
+  achievement: 3000
   HitPointGauge: {fileID: 681361570}
   AchievmentGauge: {fileID: 1945223417}
 --- !u!1 &2132280326

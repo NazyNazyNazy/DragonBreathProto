@@ -11,9 +11,9 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField]
     GameObject meteorPrefab = null;
     [SerializeField, Min(0)]
-    float minMeteorSpeed = 1;
+    float minMeteorSpeed = 0.5f;
     [SerializeField, Min(0)]
-    float maxMeteorSpeed = 4;
+    float maxMeteorSpeed = 2f;
     [SerializeField, Range(-180, 180)]
     float minAngleZ = 0;
     [SerializeField, Range(-180, 180)]
@@ -27,8 +27,8 @@ public class MeteorSpawner : MonoBehaviour
 
     void Start()
     {
-        minSpawnInterval = 3f;//出現数
-        maxSpawnInterval = 6f;//出現数
+        minSpawnInterval = 0.3f;//出現数
+        maxSpawnInterval = 0.6f;//出現数
     }
 
     void Update()

@@ -111,7 +111,7 @@ public class ShootingManager : MonoBehaviour
         Score = 0;
 
         //LeftTime = new System.TimeSpan(0, 0, 5 * Location.encountNo); //検証用で一定時間のシューティングできるようにしている
-        LeftTime = new System.TimeSpan(0, 0, 5 * 5);
+        LeftTime = new System.TimeSpan(0, 0, 5 * 2);
         ChangeBgTime = new System.TimeSpan(0, 0, 5 * 1);
 
 
